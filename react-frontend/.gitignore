@@ -1,0 +1,5 @@
+# react-frontend/.gitignore
+
+node_modules/
+build/
+.env
