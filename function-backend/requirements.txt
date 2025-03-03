@@ -1,0 +1,5 @@
+# function-backend/requirements.txt
+
+azure-functions
+pyodbc
+azure-search-documents
