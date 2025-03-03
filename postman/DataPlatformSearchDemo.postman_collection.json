@@ -1,0 +1,57 @@
+{
+    "info": {
+        "name": "DataPlatformSearchDemo",
+        "_postman_id": "b0a3f8e1-6c85-44cb-84e0-xxxxxxx",
+        "description": "Postman Collection for DataPlatform Search Demo APIs",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Search Data",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "{{apim_key}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{apim_base_url}}/search",
+                    "host": ["{{apim_base_url}}"],
+                    "path": ["search"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"search_by\": \"name\",\n    \"search_value\": \"John Doe\"\n}"
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "{{apim_key}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{apim_base_url}}/health",
+                    "host": ["{{apim_base_url}}"],
+                    "path": ["health"]
+                }
+            },
+            "response": []
+        }
+    ]
+}
