@@ -1,0 +1,76 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "DataPlatform Search API",
+        "description": "Unified Search across Fabric SQL & ADLS using Cognitive Search.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://dataplatformsearchdemoapim.azure-api.net"
+        }
+    ],
+    "paths": {
+        "/search": {
+            "post": {
+                "summary": "Search across data sources",
+                "operationId": "SearchData",
+                "parameters": [
+                    {
+                        "name": "Ocp-Apim-Subscription-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "search_by": {
+                                        "type": "string",
+                                        "enum": ["name", "id"]
+                                    },
+                                    "search_value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["search_by", "search_value"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful search response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "FabricDatabase": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        "BlobStorage": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
